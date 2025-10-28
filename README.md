@@ -126,7 +126,7 @@ The monorepo follows the Turborepo convention of grouping packages into one of t
 
 ### Setup
 
-1. Clone the repo into a GitHub repository (or fork https://github.com/crbnos/carbon/fork). If you plan to use the code in production, [acquire a commercial license](https://carbon.ms/sales) to comply with the BSL license.
+1. Clone the repo into a public GitHub repository (or fork https://github.com/crbnos/carbon/fork). If want to make the repo private, you should [acquire a commercial license](https://carbon.ms/sales) to comply with the AGPL license.
 
    ```sh
    git clone https://github.com/crbnos/carbon.git
