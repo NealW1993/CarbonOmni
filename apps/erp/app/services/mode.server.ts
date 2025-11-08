@@ -14,13 +14,21 @@ export function getMode(request: Request): Mode | null {
 }
 
 export function setMode(mode: Mode | "system") {
+  const isProd = process.env.NODE_ENV === "production";
+  const domain = isProd ? DOMAIN : undefined; // don't set domain on localhost
+
   if (mode === "system") {
-    return cookie.serialize(cookieName, "", { path: "/", maxAge: -1 });
-  } else {
-    return cookie.serialize(cookieName, mode, {
+    // clear cookie (attributes must match how it was set)
+    return cookie.serialize("mode", "", {
       path: "/",
-      maxAge: 31536000,
-      domain: DOMAIN,
+      maxAge: -1,
+      domain,
     });
   }
+
+  return cookie.serialize("mode", mode, {
+    path: "/",
+    maxAge: 31536000,
+    domain,
+  });
 }

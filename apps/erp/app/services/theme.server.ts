@@ -23,9 +23,12 @@ export function getTheme(request: Request): Theme {
 }
 
 export function setTheme(theme: string) {
+  const isProd = process.env.NODE_ENV === "production";
+
   return cookie.serialize(cookieName, theme, {
     path: "/",
     maxAge: 31536000,
-    domain: DOMAIN,
+    // Only set domain in production (localhost will reject it)
+    domain: isProd ? DOMAIN : undefined,
   });
 }
